@@ -5,15 +5,15 @@ import com.iamhanao.mall.mbg.mapper.PmsBrandMapper;
 import com.iamhanao.mall.mbg.model.PmsBrand;
 import com.iamhanao.mall.mbg.model.PmsBrandExample;
 import com.iamhanao.mall.service.PmsBrandService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
 
-    @Autowired
+    @Resource
     private PmsBrandMapper pmsBrandMapper;
 
     @Override
