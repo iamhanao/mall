@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = "UmsMemberController", description = "会员注册登录管理")
+@Api(tags = "会员注册登录管理")
 @Controller
 @RequestMapping("sso")
 public class UmsMemberController {
