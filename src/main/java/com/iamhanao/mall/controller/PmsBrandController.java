@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class PmsBrandController {
     @Autowired
     private PmsBrandService pmsBrandService;
 
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     @ApiOperation("获取所有品牌列表")
     @GetMapping("listAll")
     @ResponseBody
@@ -31,6 +33,7 @@ public class PmsBrandController {
         return CommonResult.success(pmsBrandService.listAllBrand());
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:create')")
     @ApiOperation("添加品牌")
     @PostMapping("create")
     @ResponseBody
@@ -47,6 +50,7 @@ public class PmsBrandController {
         return result;
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:update')")
     @ApiOperation("更新指定id品牌信息")
     @PostMapping("update/{id}")
     @ResponseBody
@@ -63,6 +67,7 @@ public class PmsBrandController {
         return result;
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:delete')")
     @ApiOperation("删除指定id的品牌")
     @GetMapping("delete/{id}")
     @ResponseBody

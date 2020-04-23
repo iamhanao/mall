@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iamhanao.mall.dao.UmsAdminRoleRelationDao">
+  <select id="getPermissionList" resultMap="com.iamhanao.mall.mbg.mapper.UmsPermissionMapper.BaseResultMap">
+    SELECT a.* FROM (SELECT
+        p.*
+    FROM
+        ums_admin_role_relation arr
+        LEFT JOIN ums_role_permission_relation rpr ON arr.role_id = rpr.role_id
+        LEFT JOIN ums_permission p ON rpr.permission_id = p.id
+        AND p.`status` = 1
+        AND p.pid != 0
+    WHERE
+        arr.admin_id = #{adminId}
+        AND NOT EXISTS (
+          SELECT 1 FROM ums_admin_permission_relation t
+          WHERE t.admin_id = arr.admin_id
+              AND t.permission_id = p.id
+              AND t.type =- 1)
+    UNION ALL
+    SELECT
+        p.*
+    FROM
+        ums_admin_permission_relation apr
+        LEFT JOIN ums_permission p ON apr.permission_id = p.id
+        AND apr.type = 1
+        AND apr.admin_id = #{adminId}) a WHERE a.id IS NOT NULL
+  </select>
+</mapper>
