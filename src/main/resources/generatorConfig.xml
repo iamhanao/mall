@@ -38,14 +38,14 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.iamhanao.mall.mbg.mapper"
                              targetProject="./src/main/java"/>
         <!--生成全部表tableName设为%-->
-        <table tableName="ums_admin">
+        <table tableName="pms_product">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="ums_role">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="ums_permission">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="pms_product_attribute">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="pms_product_attribute_value">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>
